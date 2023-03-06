@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BibliotecaLibros.ViewModels"
+             Title="Personas"
+             x:Class="BibliotecaLibros.View.ViewPersona">
+
+    <ContentPage.BindingContext>
+        <local:ViewModelPersona></local:ViewModelPersona>
+    </ContentPage.BindingContext>
+
+
+
+
+    <StackLayout>
+        <Frame BackgroundColor="#13005A" Padding="24" CornerRadius="0">
+            <Label Text="Welcome to Bibliotec" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+
+        <Image Source="https://pin.it/43oFgmL" 
+               Aspect="AspectFill" HorizontalOptions="Center"/>
+
+        <Label Text="Nombre"></Label>
+        <Entry  Text="{Binding Nombre}" Keyboard="Text"></Entry>
+
+        <Label Text="Numero de Cuenta"></Label>
+        <Entry Text="{Binding NumeroCuenta}" Keyboard="Numeric"></Entry>
+
+        <Button Command="{Binding CrearPersona}" Text="Registrar"></Button>
+
+        <Label Text="{Binding Mensaje}"></Label>
+
+        <ListView ItemsSource="{Binding ListaPersonas}" >
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" ></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding nombre}" ></Label>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding numeroCuenta}" ></Label>
+
+                        </Grid>
+                        
+                    </ViewCell>
+                    
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+
+    </StackLayout>
+</ContentPage>
